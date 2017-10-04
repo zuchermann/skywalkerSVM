@@ -65,6 +65,7 @@ def fist_to_binary(data):
         data[i] = 1 if data[i] == [0, 0, 0, 0, 0] else 0
 
 def fingers_to_classes(data):
+    ##IN PLACE
     ##like fist to binary but different class for each finger
     for i in range(len(data)):
         val = 0
@@ -79,6 +80,12 @@ def fingers_to_classes(data):
         elif data[i] == [0, 0, 0, 0, 99]:
             val = 5
         data[i] = val
+
+def finger_to_regression_label(data, finger_index):
+    ##IN PLACE
+    ##extracts data for single finger to be used in regression
+    for i in range(len(data)):
+        data[i] = data[i][finger_index]
 
 
 

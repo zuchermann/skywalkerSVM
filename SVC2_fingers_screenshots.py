@@ -18,7 +18,7 @@ def prepare(images):
 
 
 ##importing images
-images, data = get_image_h5("./../data/with_brace/ipad_zach/fingers") # get images
+images, data = get_image_h5("./../data/with_brace/jason/oneMinute2") # get images
 images, shape = prepare(images)
 
 ##convert label data to two classes
@@ -29,7 +29,7 @@ fingers_to_classes(data)
 #image.show()
 
 ## Create a classifier: a support vector classifier
-classifier = svm.SVC(gamma=0.0001)
+classifier = svm.SVC(gamma=0.00001)
 classifier.fit(images, data)
 
 ## run the model
