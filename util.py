@@ -47,7 +47,7 @@ def downsample_images(images, size = 12):
         reduced_image = reduced_image.flatten()
         reduced_image = reduced_image.astype('uint8')
         reduced_images.append(reduced_image)
-    print('Reduced size:', str(shape))
+    #print('Reduced size:', str(shape))
     return reduced_images, shape
 
 def crop(images):

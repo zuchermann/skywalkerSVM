@@ -18,7 +18,7 @@ def prepare(images):
 
 
 ##importing images
-images, data = get_image_h5("./../data/with_brace/jason/oneMinute2") # get images
+images, data = get_image_h5("./../data/with_brace/tina") # get images
 images, shape = prepare(images)
 
 ##convert label data to two classes
