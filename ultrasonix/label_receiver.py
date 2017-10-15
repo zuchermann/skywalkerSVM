@@ -37,12 +37,13 @@ def save_image_data():
     folder = 'images'
     for the_file in os.listdir(folder):
         file_path = os.path.join(folder, the_file)
-        try:
-            if os.path.isfile(file_path):
-                os.unlink(file_path)
-                # elif os.path.isdir(file_path): shutil.rmtree(file_path)
-        except Exception as e:
-            print(e)
+        if the_file.endswith('.png') or the_file.endswith('.txt'):
+            try:
+                if os.path.isfile(file_path):
+                    os.unlink(file_path)
+                    # elif os.path.isdir(file_path): shutil.rmtree(file_path)
+            except Exception as e:
+                print(e)
     with progressbar.ProgressBar(max_value=len(labels)) as bar:
         for i in range(len(labels)):
             cur_label = labels[i]

@@ -13,7 +13,6 @@ import time
 import Queue
 from threading import Thread, Timer
 from multiprocessing import Process
-
 from pyulteriuscom import Ulterius, uData, imagingMode
 
 #def init():
