@@ -6,6 +6,7 @@ import progressbar
 import h5py
 from PIL import Image
 from skimage.measure import block_reduce
+from skimage.feature import hog
 from  scipy import ndimage
 dir_path = os.path.dirname(os.path.realpath(__file__))
 parent_dir = os.path.abspath(os.path.join(dir_path, os.pardir))
@@ -39,12 +40,13 @@ def get_image_h5(directory):
     return images, data
 
 
-def downsample_images(images, size = 12):
+def downsample_images(images, size = 12, flatten=True):
     reduced_images = []
     for image in images:
         reduced_image = block_reduce(image, block_size=(size, size), func=np.median)
         shape = reduced_image.shape
-        reduced_image = reduced_image.flatten()
+        if flatten:
+            reduced_image = reduced_image.flatten()
         reduced_image = reduced_image.astype('uint8')
         reduced_images.append(reduced_image)
     #print('Reduced size:', str(shape))
@@ -55,6 +57,13 @@ def crop(images):
     for i in range(len(images)):
         cropped.append((images[i])[:,50:540])
     return cropped
+
+def my_hog(images):
+    hogs = []
+    for i in range(len(images)):
+        hg = hog(images[i], orientations=4, pixels_per_cell=(4, 4), cells_per_block=(4, 4), transform_sqrt=True)
+        hogs.append(hg)
+    return hogs
 
 
 def fist_to_binary(data):

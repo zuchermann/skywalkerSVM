@@ -1,7 +1,7 @@
 import h5py
 from util import get_image_data
 
-folder = './../data/with_brace/tina'
+folder = './../data/with_brace/ipad_zach/ring_cont2'
 
 images, data = get_image_data(folder)
 out_data = [images, data]
